@@ -5,11 +5,12 @@
 ** Login   <hervie_g@epitech.net>
 ** 
 ** Started on  Thu Oct 18 14:42:17 2012 guillaume hervier
-** Last update Fri Oct 26 12:38:57 2012 guillaume hervier
+** Last update Fri Oct 26 19:16:50 2012 guillaume hervier
 */
 
 #include <stdlib.h>
 #include "stack.h"
+#include "lexer.h"
 
 t_stack_node	*stack_node_create(int type, void *data)
 {
@@ -44,6 +45,7 @@ void		stack_node_destroy(t_stack *stack, t_stack_node *node)
   if (stack && node)
     {
       stack_node_remove(stack, node);
+      free(((t_lex_token *) node->data)->matched);
       free(node->data);
       free(node);
     }

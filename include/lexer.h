@@ -5,7 +5,7 @@
 ** Login   <hervie_g@epitech.net>
 ** 
 ** Started on  Thu Oct 18 13:39:57 2012 guillaume hervier
-** Last update Fri Oct 26 11:22:56 2012 guillaume hervier
+** Last update Fri Oct 26 18:49:46 2012 guillaume hervier
 */
 
 #ifndef LEXER_H_
@@ -37,6 +37,7 @@ struct s_lex_token
   int	priority;
   int	assoc;
   char	*matched;
+  int	value;
 };
 
 t_lex_context		*lex_context_create(char *);

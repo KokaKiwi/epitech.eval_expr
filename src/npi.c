@@ -5,7 +5,7 @@
 ** Login   <hervie_g@epitech.net>
 ** 
 ** Started on  Fri Oct 26 09:51:24 2012 guillaume hervier
-** Last update Fri Oct 26 15:07:05 2012 guillaume hervier
+** Last update Fri Oct 26 19:17:22 2012 guillaume hervier
 */
 
 #include <stdio.h>
@@ -63,8 +63,13 @@ int		npi_handle_paren(t_stack *stack, t_stack *ops)
 void		npi_handle_token(t_stack *stack, t_stack *ops,
 			     t_lex_token *token)
 {
+  t_stack_node	*node;
+
   if (token->type == LEX_TYPE_NUMBER)
-    stack_push(stack, NPI_TYPE_NUMBER, token);
+    {
+      node = stack_push(stack, NPI_TYPE_NUMBER, token);
+      node->value = my_getnbr(token->matched);
+    }
   else if (token->type == LEX_TYPE_OPERATOR)
     put_op_in_stack(stack, ops, token);
   else if (token->type == LEX_TYPE_OPEN_PAREN)
@@ -96,5 +101,6 @@ t_stack		*npi_make_stack(char *expr)
 	stack_push_node(stack, cur);
     }
   stack_destroy(ops);
+  free(context);
   return (stack);
 }

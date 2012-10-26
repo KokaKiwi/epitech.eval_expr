@@ -5,7 +5,7 @@
 ** Login   <hervie_g@epitech.net>
 ** 
 ** Started on  Fri Oct 26 10:46:20 2012 guillaume hervier
-** Last update Fri Oct 26 15:37:26 2012 guillaume hervier
+** Last update Fri Oct 26 17:19:20 2012 guillaume hervier
 */
 
 #include <stdlib.h>
@@ -54,4 +54,19 @@ t_stack_node		*stack_get_relative(t_stack_node *start,
   if (offset >= 0 && start->next == NULL)
     return (NULL);
   return (start);
+}
+
+int			stack_size(t_stack *stack)
+{
+  t_stack_node		*cur;
+  int			size;
+
+  size = 0;
+  cur = stack->tail;
+  while (cur != NULL)
+    {
+      size++;
+      cur = cur->prev;
+    }
+  return (size);
 }

@@ -5,7 +5,7 @@
 ** Login   <hervie_g@epitech.net>
 ** 
 ** Started on  Thu Oct 18 09:40:36 2012 guillaume hervier
-** Last update Fri Oct 26 15:24:07 2012 guillaume hervier
+** Last update Fri Oct 26 18:55:42 2012 guillaume hervier
 */
 
 #ifndef STACK_H_
@@ -23,6 +23,7 @@ struct s_stack_node
 {
   int		type;
   void		*data;
+  int		value;
   t_stack_node	*next;
   t_stack_node	*prev;
 };
@@ -46,5 +47,6 @@ void		stack_node_destroy(t_stack *, t_stack_node *);
 void		stack_insert_node_after(t_stack_node *, t_stack_node *);
 
 t_stack_node	*stack_get_relative(t_stack_node *, int);
+int		stack_size(t_stack *);
 
 #endif
